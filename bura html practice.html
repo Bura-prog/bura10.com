@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Chronicle</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 1rem 0;
+            border-bottom: 5px solid #990000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        .logo span {
+            color: #990000;
+        }
+        
+        .date {
+            font-style: italic;
+            color: #ccc;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #333;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            padding: 15px 20px;
+        }
+        
+        .nav-menu li a {
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-menu li a:hover {
+            color: #990000;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        /* Featured Article */
+        .featured-article {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 30px;
+        }
+        
+        .featured-article img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .featured-article h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .article-meta {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        /* Article Cards */
+        .article-card {
+            display: flex;
+            margin-bottom: 30px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .article-card img {
+            width: 150px;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 15px;
+        }
+        
+        .card-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .card-content p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .read-more {
+            color: #990000;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar h2 {
+            border-bottom: 2px solid #990000;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .sidebar-article {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-article:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar-article h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: #990000;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .date {
+                margin-top: 10px;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .article-card {
+                flex-direction: column;
+            }
+            
+            .article-card img {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">The <span>Chronicle</span></div>
+            <div class="date">Monday, June 5, 2023</div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Politics</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Science</a></li>
+                <li><a href="#">Health</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Entertainment</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <main>
+            <article class="featured-article">
+                <img src="https://via.placeholder.com/800x450" alt="Featured Article Image">
+                <h1>Global Summit Addresses Climate Change Crisis</h1>
+                <div class="article-meta">
+                    <span>By Sarah Johnson</span> | 
+                    <span>June 5, 2023</span> | 
+                    <span>Updated 2 hours ago</span>
+                </div>
+                <div class="article-content">
+                    <p>World leaders gathered in Paris this week for an emergency climate summit as new data shows the planet is warming faster than previously predicted. The three-day conference brought together representatives from 120 nations to discuss immediate action plans.</p>
+                    
+                    <p>"We are at a critical juncture in human history," said UN Secretary-General Maria Fernandez in her opening remarks. "The window for meaningful action is closing rapidly, and we must act with unprecedented urgency."</p>
+                    
+                    <p>The summit focused on three key areas: transitioning to renewable energy, protecting biodiversity, and establishing international carbon pricing mechanisms. While several nations announced new commitments, environmental groups argue the measures don't go far enough.</p>
+                    
+                    <p>Scientists presented alarming data showing that current policies would lead to a 2.7°C temperature rise by 2100, far exceeding the 1.5°C target set in the Paris Agreement. "Every fraction of a degree matters," warned climatologist Dr. James Wong. "We're seeing the consequences already with increased extreme weather events."</p>
+                </div>
+            </article>
+            
+            <div class="article-grid">
+                <article class="article-card">
+                    <img src="https://via.placeholder.com/150x100" alt="Article Image">
+                    <div class="card-content">
+                        <h3>Tech Giant Unveils Revolutionary AI Assistant</h3>
+                        <p>The new system promises to transform how we interact with technology, but raises ethical questions...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <img src="https://via.placeholder.com/150x100" alt="Article Image">
+                    <div class="card-content">
+                        <h3>Stock Markets Reach Record Highs Amid Economic Recovery</h3>
+                        <p>Global markets surged this week as positive economic indicators suggest the post-pandemic recovery is gaining momentum...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+                
+                <article class="article-card">
+                    <img src="https://via.placeholder.com/150x100" alt="Article Image">
+                    <div class="card-content">
+                        <h3>Breakthrough in Cancer Research Shows Promise</h3>
+                        <p>Scientists report significant progress in immunotherapy treatments that could benefit millions of patients worldwide...</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </article>
+            </div>
+        </main>
+        
+        <aside class="sidebar">
+            <h2>Latest News</h2>
+            
+            <div class="sidebar-article">
+                <h3>City Council Approves New Housing Development</h3>
+                <p>The controversial project will add 500 affordable units to the downtown area.</p>
+            </div>
+            
+            <div class="sidebar-article">
+                <h3>Local School District Announces Curriculum Changes</h3>
+                <p>New emphasis on STEM subjects and digital literacy coming next school year.</p>
+            </div>
+            
+            <div class="sidebar-article">
+                <h3>Transportation Strike Averted After Last-Minute Deal</h3>
+                <p>Union leaders and management reached agreement just hours before the deadline.</p>
+            </div>
+            
+            <div class="sidebar-article">
+                <h3>Annual Food Festival Returns This Weekend</h3>
+                <p>Over 100 vendors expected at the city's premier culinary event.</p>
+            </div>
+            
+            <div class="sidebar-article">
+                <h3>New Study Links Exercise to Improved Mental Health</h3>
+                <p>Research confirms significant benefits from just 30 minutes of daily activity.</p>
+            </div>
+        </aside>
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <ul>
+                    <li><a href="#">Our History</a></li>
+                    <li><a href="#">Editorial Standards</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sections</h3>
+                <ul>
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Opinion</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Arts</a></li>
+                    <li><a href="#">Sports</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Subscribe</h3>
+                <ul>
+                    <li><a href="#">Digital Edition</a></li>
+                    <li><a href="#">Print Edition</a></li>
+                    <li><a href="#">Newsletters</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 The Daily Chronicle. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
+ 
